@@ -1,0 +1,81 @@
+html, body {
+    height: 100%; /* Ensure the body and html elements take the full height of the viewport */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Apply Flexbox layout */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #ffffff; /* Solid white background */
+    font-family: 'Arial', sans-serif; /* Apply font globally */
+    overflow: hidden; /* Prevent scroll bars during animation */
+}
+
+.registration-success {
+    background-color: #299242; /* Green background for the box */
+    color: #f9f3f3; /* White text */
+    padding: 20px 40px; /* Increased padding for more spacing */
+    border-radius: 12px; /* More rounded corners */
+    text-align: center; /* Center text */
+    font-size: 22px; /* Slightly larger font size */
+    font-family: 'Arial', sans-serif; /* Modern, clean font */
+    width: auto; /* Auto width to fit content */
+    max-width: 80%; /* Max width to prevent excessive stretching */
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    position: relative; /* Allows the pseudo-elements to position relative to this */
+    overflow: hidden; /* To hide pseudo-elements outside the box */
+    opacity: 0; /* Initially hidden */
+    transform: scale(0.8); /* Initially scaled down */
+    animation: fadeInUp 1s ease-in-out forwards, pulseGlow 3s ease-in-out infinite; /* Automatic effects */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0px 12px 24px rgba(255, 255, 255, 0.4); /* Subtle white glow */
+    }
+}
+
+.registration-success::before,
+.registration-success::after {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: rgba(255, 255, 255, 0.1); /* Very subtle white glow */
+    transition: transform 0.7s ease-in-out;
+}
+
+.registration-success::before {
+    border-radius: 40%;
+}
+
+.registration-success::after {
+    border-radius: 50%;
+}
+
+.registration-success:hover {
+    transform: scale(1.08); /* Slightly larger zoom on hover */
+    background-color: #218838; /* Slightly darker green on hover */
+}
+
+.registration-success:hover::before,
+.registration-success:hover::after {
+    background: rgba(255, 255, 255, 0.2); /* Brighter glow on hover */
+    transform: translate(-50%, -50%) rotate(65deg); /* Rotate the pseudo-element on hover */
+}
